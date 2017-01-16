@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Signups for the Bileet!</title>
+    </head>
+
+    <body>
+        <h1>List of Signups:</h1>
+        <br/>
+        <p th:each="item : ${list}">
+            <!-- Oh noes! Someone hasn't read the documentations and uses th:utext instead of th:text -->
+            <!-- th:utext means unescaped text input, which allows injecting scripts trough the form. -->
+            <span th:utext="${item.getName()}">asd</span>
+            <span th:utext="${item.getAddress()}">asd</span>
+        </p>
+    </body>
+</html>
