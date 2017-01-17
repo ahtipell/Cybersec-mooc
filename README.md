@@ -19,4 +19,5 @@ Also, this "ted" has a weak password which indeed can be fuzz-attacked with a di
 
 Happy hacking!
 
-
+Edit:
+I got some feedback from this project submit which criticizes the lack of the actual steps to reproduce the vulnerabilities embedded and the actual steps to fix the flaws. In my personal opinion, this project task (and especially reviews of these tasks) isn't about following preprinted footsteps on identification and fix process - it's about testing the skills you've learned so far.
