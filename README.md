@@ -3,6 +3,8 @@ Helsinki Uni &amp; F-secure Cyber security Mooc Project 1
 
 Nicely vulnerable web application.
 
+First note: This document is easier to read in "raw view"-mode.
+
 This repository is for Helsinki University CyberSec Mooc and contains code for extremely vulnerable web server application to exploit. Main functionality of the application contains a platform to sign up for "Bileet" (party in english) and super basic admin feature to print out the list of current participants.
 
 The application contains a series of flaws and vulnerabilities to exploit. They're mainly commented inside the code, but outlined here as well:
