@@ -24,7 +24,7 @@ Happy hacking!
 Edit:
 I got some feedback from this project submit which criticizes the lack of the actual steps to reproduce the vulnerabilities embedded and the actual steps to fix the flaws. In my personal opinion, this project task (and especially reviews of these tasks) isn't about following preprinted footsteps on identification and fix process - it's about testing the skills you've learned so far.
 
-Edit 2: I Stand Corrected. It appears, that the teachers of the course want a bit longer report than this is, so I shall step my game up a little!
+Edit 2: I Stand Corrected. It appears, that the teachers of the course want a bit longer report than this is, so I shall step my game up a little! Also, everyone reading this should note the comment lines in the code. A lot of clues down there!
 
 Vulnerability 1: Misconfigured admin account
 Steps to reproduce:
