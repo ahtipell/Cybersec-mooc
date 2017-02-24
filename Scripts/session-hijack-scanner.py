@@ -11,8 +11,8 @@ for i in range(0, 256):
     response = requests.get(url, headers=header)        
     
     if response.status_code == 200:
-        # Normal response.content is 558, so more than that, there should be
-	# items in the cart.
+        # Normal response.content is 452, so more than that, there should be
+	# something there!
 	print len(response.content)
 		
         if (len(response.content) > 452):
