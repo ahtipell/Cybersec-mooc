@@ -1,6 +1,7 @@
 import requests
 import time
 
+# Change the url to one corresponding your target.
 url = "http://localhost:8080/signups.html"
 
 for i in range(0, 256):
