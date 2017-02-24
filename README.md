@@ -60,3 +60,31 @@ Steps to reproduce:
 Steps to counter:
 1. From signups.html, change the <span>-tag "th:utext"-parameters to "th:text"
 1.1 (Lines 13 and 14, replace with: "<span th:text="${item.getName()}">asd</span>" and "<span th:text="${item.getAddress()}">asd</span>", without the outermost quotation marks.)
+
+Vulnerability 4: Password directory attack
+Steps to reproduce:
+1. Run the Cybersec-mooc project server on local host
+2. Download and install OWASP ZAP, refer to the FAQ and documentation if needed (https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
+3. Download "10k_most_common.txt" from https://github.com/danielmiessler/SecLists/blob/master/Passwords/10k_most_common.txt , which includes 10000 passwords.
+4. Open OWASP ZAP and fuzz url http://localhost:port/login with Header:text:
+---- START OF HEADER ----
+POST http://localhost:port/login HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 38
+Referer: http://localhost:port/login
+Host: localhost:port
+---- END OF HEADER ----
+4.1 and Body:text, where payload for username is "ted" and payload for password is the "10k_most_common.txt":
+---- START OF BODY ----
+username=ZAP&password=ZAP&submit=Login
+---- END OF BODY ----
+4.2 Start the fuzzer
+5. After the fuzzer has completed, sort the messages by "Size resp. Header"
+5.1 Find the single row which has unique response header size.
+5.2 Inspect the payload for this row, which says "ted, president"
+6. Open http://localhost:port/login with your browser
+6.1 Log in using username "ted" and password "president"
+7. Verify that you were able to access the admin panel with user priviliges.
