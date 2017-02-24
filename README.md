@@ -21,3 +21,27 @@ Happy hacking!
 
 Edit:
 I got some feedback from this project submit which criticizes the lack of the actual steps to reproduce the vulnerabilities embedded and the actual steps to fix the flaws. In my personal opinion, this project task (and especially reviews of these tasks) isn't about following preprinted footsteps on identification and fix process - it's about testing the skills you've learned so far.
+
+Edit 2: I Stand Corrected. It appears, that the teachers of the course want a bit longer report than this is, so I shall step my game up a little!
+
+Vulnerability 1: Misconfigured admin account
+Steps to reproduce:
+1. Run the Cybersec-mooc project server on local host
+2. Open web browser, locate http://localhost:port/login page
+3. Login as user "admin" with password "admin"
+4. You should be redirected to signups.html admin panel
+Steps to counter:
+1. Change admin users password to a strong, not predictable one.
+
+Vulnerability 2: Misconfigured session management
+Steps to reproduce:
+1. Run the Cybersec-mooc project server on local host
+2. Open web browser, locate http://localhost:port/login page
+3. Login as user "admin" with password "admin"
+4. Using a different platform (not linked to your browsers cookies), run the python 2.7 script "session-hijack-scanner.py" located in Scripts-folder (in the base of this repository)
+4.1 (The script brute forces http-get requests with custom JSESSIONIDs and breaks the loop when it finds response content lenght larger than the one of the failed request.)
+5. By inspecting the lenght of the content returned by the loop, the script will inform you with a passable JSESSIONID and the response.content returned by the successful request.
+Steps to counter:
+1. From SignupsController.java, remove TomcatContextCustomizer Bean and it's associates
+1.1 (Lines 66 - 86. These beans limit the JSESSIONID to 1 hex and allow it to be reached from the browser console.)
+1.2 (Beans: public TomcatEmbeddedServletContainerFactory tomcatContainerFactory() and public TomcatContextCustomizer tomcatContextCustomizer()) 
