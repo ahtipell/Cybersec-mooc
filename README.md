@@ -88,3 +88,5 @@ username=ZAP&password=ZAP&submit=Login
 6. Open http://localhost:port/login with your browser
 6.1 Log in using username "ted" and password "president"
 7. Verify that you were able to access the admin panel with user priviliges.
+Steps to counter:
+1. Make "Ted" change his password to something that is more resisten to fuzzing attack and not found on common password lists or dictionaries, since actual brute forcing is not that plausible in real web environmen, where packets use significant amount of time to travel back and fourth.
