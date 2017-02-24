@@ -47,3 +47,16 @@ Steps to counter:
 1. From SignupsController.java, remove TomcatContextCustomizer Bean and it's associates
 1.1 (Lines 66 - 86. These beans limit the JSESSIONID to 1 hex and allow it to be reached from the browser console.)
 1.2 (Beans: public TomcatEmbeddedServletContainerFactory tomcatContainerFactory() and public TomcatContextCustomizer tomcatContextCustomizer()) 
+
+Vulnerability 3: Potential XSS attack
+Steps to reproduce:
+1. Run the Cybersec-mooc project server on local host
+2. Open web browser, locate http://localhost:port/form page
+3. In the "Name"-field, write "XSS ATTACK". In the "Address"-field, write "<script>console.log("injected script working!")</script>" without the outermost quotation marks.
+4. In your browser, locate http://localhost:port/login page
+5. Login to the site with username "admin" and password "admin"
+6. In your browser, open developer console (In Chrome, right click the page, find "Inspect" and from the window opening, choose "Console"
+7. Inspect the console output and locate the text "injected script working"
+Steps to counter:
+1. From signups.html, change the <span>-tag "th:utext"-parameters to "th:text"
+1.1 (Lines 13 and 14, replace with: "<span th:text="${item.getName()}">asd</span>" and "<span th:text="${item.getAddress()}">asd</span>", without the outermost quotation marks.)
